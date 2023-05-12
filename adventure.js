@@ -147,4 +147,16 @@ class AdventureScene extends Phaser.Scene {
     onEnter() {
         console.warn('This AdventureScene did not implement onEnter():', this.constructor.name);
     }
+
+    describe(object, message) {
+        object.on('pointerover', () => {
+          this.showMessage(message);
+        });
+      }
+    click(object, destination) {
+    object.on('pointerdown', () => {
+        this.gotoScene(destination);
+    });
+    }
+    
 }
