@@ -84,6 +84,16 @@ class hall extends AdventureScene {
                 if (this.hasItem("🦯")) {
                     this.loseItem("🦯");
                     this.showMessage("*CRACK*");
+                    let shake = this.tweens.add({
+                        targets: secdoor, 
+                        duration: 50, 
+                        x: '+=10', 
+                        y: '+=10',
+                        ease: 'Linear',
+                        yoyo: true, 
+                        repeat: 5, 
+                    });
+                    shake.play();
                     secdoor.setText("Security door");
                     this.gotoScene('security');
                 }
@@ -169,7 +179,7 @@ class security extends AdventureScene {
             alpha: 0,
         });
 
-        let keycard = this.add.text(this.w * 0.5, this.w * 0.1, "💳 Keycard")
+        let keycard = this.add.text(this.w * 0.2, this.w * 0.3, "💳 Keycard")
         .setFontSize(this.s * 2)
         .setInteractive()
         .on('pointerdown', () => {
